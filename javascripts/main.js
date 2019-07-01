@@ -6,7 +6,21 @@
 var distance, age, subtotal, finalPrice;
 
 // chiedi km e età
+distance = prompt("Salve, quanti km deve viaggiare?");
+age = prompt("Quanti anni ha?");
 
 // calcola costo in base ai km
+subtotal = distance * 0.21;
+console.log(subtotal);
 
 // verifica se si può applicare sconto
+if (age < 18) {
+	finalPrice = subtotal - (subtotal/5);		//sconto 20% minorenni
+} else if (age > 65) {
+	finalPrice = subtotal - (subtotal/2.5);		//sconto 40% over 65
+} else {
+	finalPrice = subtotal;						//nessuno sconto
+}
+
+//visualizza prezzo
+console.log(finalPrice);
