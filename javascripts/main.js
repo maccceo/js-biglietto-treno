@@ -5,8 +5,11 @@
 var distance, age, subtotal, finalPrice;
 
 // chiedi km e età
-distance = prompt("Benvenuto, quanti km devi viaggiare?");
-age = prompt("Quanti anni hai?");
+distance = parseInt(prompt("Benvenuto, quanti km devi viaggiare?"));
+age = parseInt(prompt("Quanti anni hai?"));
+// Controlli per verificare di aver acquisito numeri e non stringhe
+console.log(distance, typeof distance);
+console.log(age, typeof age);
 
 // calcola costo in base ai km
 subtotal = distance * 0.21;
