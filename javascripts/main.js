@@ -2,26 +2,27 @@
 // calcolare il prezzo totale definito in base ai km (0.21 €cent al km)
 // applicare sconto del 20% per i minorenni e del 40% per gli over 65
 
-var distance, age, subtotal, finalPrice;
+var distance, age, unitPrice, subtotal, netPrice;
 
-// chiedi km e età
+// chiedi km e età e converti l'input in numero
 distance = parseInt(prompt("Benvenuto, quanti km devi viaggiare?"));
 age = parseInt(prompt("Quanti anni hai?"));
-// Controlli per verificare di aver acquisito numeri e non stringhe
-console.log(distance, typeof distance);
-console.log(age, typeof age);
 
 // calcola costo in base ai km
-subtotal = distance * 0.21;
+unitPrice = 0.21;
+subtotal = distance * unitPrice;
 
 // verifica se si può applicare sconto
 if (age < 18) {
-	finalPrice = subtotal - (subtotal/5);		//sconto 20% minorenni
+	netPrice = subtotal - (subtotal/5);			//sconto 20% minorenni
+	console.log("Casistica <18 , sconto di €", subtotal/5);
 } else if (age > 65) {
-	finalPrice = subtotal - (subtotal/2.5);		//sconto 40% over 65
+	netPrice = subtotal - (subtotal/2.5);		//sconto 40% over 65
+	console.log("Casistica >65, sconto di €", subtotal/2.5);
 } else {
-	finalPrice = subtotal;						//nessuno sconto
+	netPrice = subtotal;						//nessuno sconto
+	console.log("Niente sconto età");
 }
 
 //visualizza prezzo
-document.getElementById("price").innerHTML = finalPrice.toFixed(2);		//arrotondato a 2 decimali
+document.getElementById("price").innerHTML = netPrice.toFixed(2);		//arrotondato a 2 decimali
